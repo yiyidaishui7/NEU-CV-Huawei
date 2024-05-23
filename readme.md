@@ -1,4 +1,5 @@
-**实验目的
+# NEU&HuaweiCloud
+## 实验目的
 熟悉 modelarts开发平台，掌握本地连接modelarts方法，了解深度而学习训练及推理流程。
 
 实验环境搭建
@@ -9,12 +10,11 @@
 
 登录OBS。
 
-
-实验2.1
+## 实验2.1
 
 在本地及modelarts上跑通lenet网络训练及验证代码。
 
-实验2.2
+## 实验2.2
 
 在本地跑通deeplabv3网络训练及评估代码。要求:提交训练过程及结果截图
 参考教程:基于MindStudio搭建DeeplabV3网络实现图像语义分割任务.docx
@@ -99,11 +99,10 @@
 --data_root=./src/data --data_lst=./src/data/voc_val_lst.txt --batch_size=16 --device_target=CPU --crop_size=513 --ignore_label=255 --num_classes=21 --model=deeplab_v3_s8 --ckpt_path=./ckpt/deeplab_v3_s16-1_10.ckpt
 
 
-如果设备设置错误。记得从Ascend修改为CPU
+如果设备设置错误。Ascend修改为CPU
 
-现在可以正常执行了。
 
-选做
+## 选做
 
 在 modelarts上跑通deeplabv3网络训练及评估代码。
 要求:提交训练过程及结果截图。
