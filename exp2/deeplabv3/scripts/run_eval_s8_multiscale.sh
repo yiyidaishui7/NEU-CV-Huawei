@@ -14,11 +14,24 @@
 # limitations under the License.
 # ============================================================================
 
-export DEVICE_ID=7
+export DEVICE_ID=2
+export SLOG_PRINT_TO_STDOUT=0
 EXECUTE_PATH=$(pwd)
+eval_path=${EXECUTE_PATH}/multiscale_eval
 
-python ${EXECUTE_PATH}/../src/data/build_seg_data.py  --data_root=/PATH/TO/DATA_ROOT  \
-                    --data_lst=/PATH/TO/DATA_lst.txt  \
-                    --dst_path=/PATH/TO/MINDRECORED_NAME.mindrecord  \
-                    --num_shards=8  \
-                    --shuffle=True
+if [ -d ${eval_path} ]; then
+  rm -rf ${eval_path}
+fi
+mkdir -p ${eval_path}
+
+python ${EXECUTE_PATH}/../eval.py --data_root=/PATH_TO_DATA/vocaug  \
+                    --data_lst=/PATH_TO_DATA/vocaug/voc_val_lst.txt  \
+                    --batch_size=16  \
+                    --crop_size=513  \
+                    --ignore_label=255  \
+                    --num_classes=21  \
+                    --model=deeplab_v3_s8  \
+                    --scales_type=1  \
+                    --freeze_bn=True  \
+                    --ckpt_path=/PATH/TO/PRETRAIN_MODEL >${eval_path}/eval_log 2>&1 &
+
