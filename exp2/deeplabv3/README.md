@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# LiveInDraw
-an ios app using vr and ar
-=======
 # Contents
 
 - [Contents](#contents)
