@@ -19,23 +19,19 @@
 在本地跑通deeplabv3网络训练及评估代码。要求:提交训练过程及结果截图
 参考教程:基于MindStudio搭建DeeplabV3网络实现图像语义分割任务.docx
 
-下载数据集。包括SBD数据集和VOC数据集。
+1. 在GitLee下载开源代码。位于models-1.5/official/cv/deeplabv3下。
 
-在GitLee下载开源代码。位于models-1.5/official/cv/deeplabv3下。
+2. 下载数据集。包括SBD数据集和VOC数据集。将数据集文件放置到deeplabv3\src\data\
 
-实现语义数据集图像RGB图转换为灰度图、对数据集划分生成训练集，测试集、增强数据集，按固定格式写入txt文件。
-位于deeplabv3\src\data\get_dataset_lst.py。
-将数据集文件放置到路径中去。
-运行get_dataset_lst.py。
+3. 实现语义数据集图像RGB图转换为灰度图、对数据集划分生成训练集，测试集、增强数据集，按固定格式写入txt文件。
+运行deeplabv3\src\data\get_dataset_lst.py。
 
-查看生成的文件。
+4. 查看生成的文件。
 
-将数据集转换为MindRecord，运行build_seg_data.py。
-修改参数。
+5. 将数据集转换为MindRecord，运行build_seg_data.py。
 
-接着训练模型。
-运行train.py。
-修改参数。
+6. 训练模型。运行train.py。
+配置参数
 --data_file=D:\code\models-r1.5\official\cv \deeplabv3\src\data\preprocess\MindRecoder_train0 #修改自己的mindRecod 数据路径 
 
 --device_target=CPU #使用芯片类型，可以选cpu,Ascend,gpu
@@ -62,20 +58,14 @@
 
 --model=deeplab_v3_s16 #模型类型
 
---ckpt_pre_trained=D:\code\models-r1.5\official\cv \deeplabv3\model\resnet101_ascend_v120_imagenet2012_official_cv_bs32_acc78.ckpt #预训练模型路径
+--ckpt_pre_trained=D:\code\models-r1.5\official\cv\deeplabv3\model\resnet101_ascend_v120_imagenet2012_official_cv_bs32_acc78.ckpt #预训练模型路径
 
 --save_steps=3 # 训练多少步保存一次模型，请注意修改
 
 --keep_checkpoint_max=200 # 最多保存多少个模型文件
 
-运行。
 
---data_file=./src/data/preprocess/MindRecoder_train0 --device_target=CPU --train_dir=./ckpt --train_epochs=2 --batch_size=8 --crop_size=513 --base_lr=0.015 --lr_type=cos --min_scale=0.5 --max_scale=2.0 --ignore_label=255 --num_classes=21 --model=deeplab_v3_s16 --ckpt_pre_trained=../model/resnet101_ascend_v120_imagenet2012_official_cv_bs32_acc78.ckpt
-
-运行结果如下。
-
-
-最后是模型评估。运行eval.py。
+7. 模型评估。运行eval.py。
 修改参数。
 
 --data_root=.\src\data # 数据路径注意修改
@@ -94,12 +84,10 @@
 
 --model=deeplab_v3_s8
 
---ckpt_path= D:\code\ models-r1.5\official\cv\deeplabv3\ckpt\deeplab_v3_s16-1_12.ckpt
-
---data_root=./src/data --data_lst=./src/data/voc_val_lst.txt --batch_size=16 --device_target=CPU --crop_size=513 --ignore_label=255 --num_classes=21 --model=deeplab_v3_s8 --ckpt_path=./ckpt/deeplab_v3_s16-1_10.ckpt
+--ckpt_path= D:\code\models-r1.5\official\cv\deeplabv3\ckpt\deeplab_v3_s16-1_12.ckpt
 
 
-如果设备设置错误。Ascend修改为CPU
+如果设备设置错误。第33行 Ascend修改为CPU 本代码已修改
 
 
 ## 选做
